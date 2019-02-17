@@ -44,9 +44,14 @@
     end
   end 
     
-  Then("my message should open") do
+  When("I should see alert message") do
+  end
+  
+  
+  Then("my message will be moved to Trash") do
     pending # Write code here that turns the phrase above into concrete actions
   end
+
   
   
  

@@ -19,19 +19,20 @@ Feature: User is able to receive mail
 		When I click on "View" 
 		Then I should see "Move to trash"
         
-#Scenario: User can reply to mail
-	#When I type in a message
-	#And I click on "Reply"
-        ##Then my mail must be sent
+	Scenario: User can reply to mail
+		When I click on "View"
+		And I click on "Reply"
+    Then I should see "Your reply message was successfully sent!"
 
-#Scenario: User can move mail to trash 
-	#When I click on "Move to trash"
-        #Then I must receive a message "Are you sure?"
-        #When I click on "OK"
-        #Then my message will be moved to Trash
+	Scenario: User can move mail to trash 
+		When I click on "View"
+		And I click on "Move to trash"
+  	And I should see alert message
+  	And I click on "OK"
+  	Then my message will be moved to Trash
         
 #Scenario: User cancels moving mail to trash 
 	#When I click on "Move to trash"
-        #Then I must receive a message "Are you sure?"
+        #Then I should see "Are you sure?"
         #When I click on "Cancel"
         #Then my message will not be moved to Trash
