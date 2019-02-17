@@ -1,3 +1,4 @@
+@javascript
 Feature: User is able to receive mail
     As a User
 	In order to let other people communicate with me
@@ -14,7 +15,7 @@ Feature: User is able to receive mail
 			|       Nici	    | Viktor        | some message  | some subject  |
 		And I am logged in as "Viktor"
 		And I am visiting the "Inbox"
-
+ 
 	Scenario: User can receive mail
 		When I click on "View" 
 		Then I should see "Move to trash"
@@ -25,11 +26,13 @@ Feature: User is able to receive mail
     Then I should see "Your reply message was successfully sent!"
 
 	Scenario: User can move mail to trash 
-		When I click on "View"
+	  When I have "1" messages
+		And I click on "View"
 		And I click on "Move to trash"
-  	And I should see alert message
-  	And I click on "OK"
-  	Then my message will be moved to Trash
+  	And I should see alert message and click on OK
+		And I am visiting the "Inbox"
+  	Then I have "0" messages
+
         
 #Scenario: User cancels moving mail to trash 
 	#When I click on "Move to trash"
