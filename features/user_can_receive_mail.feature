@@ -1,5 +1,4 @@
-@javascript
-Feature: User is able to receive mail
+Feature: User is able to receive and reply to email
     As a User
 	In order to let other people communicate with me
 	I would like to be able to receive emails.
@@ -23,19 +22,7 @@ Feature: User is able to receive mail
 	Scenario: User can reply to mail
 		When I click on "View"
 		And I click on "Reply"
-    Then I should see "Your reply message was successfully sent!"
+    	Then I should see "Your reply message was successfully sent!"
 
-	Scenario: User can move mail to trash 
-	  When I have "1" messages
-		And I click on "View"
-		And I click on "Move to trash"
-  	And I should see alert message and click on OK
-		And I am visiting the "Inbox"
-  	Then I have "0" messages
-
-        
-#Scenario: User cancels moving mail to trash 
-	#When I click on "Move to trash"
-        #Then I should see "Are you sure?"
-        #When I click on "Cancel"
-        #Then my message will not be moved to Trash
+	
+    

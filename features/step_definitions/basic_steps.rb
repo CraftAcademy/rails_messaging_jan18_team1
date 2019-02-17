@@ -44,18 +44,7 @@
     end
   end 
   
-  When("I should see alert message and click on OK") do
-    page.driver.browser.switch_to.alert.accept
-  end
-  
-  When("I have {string} messages") do |expected_count|
-    count = @receiver.mailbox.inbox.count
-    expect(count).to eq expected_count.to_i
-  end
-  
-  # Then("I have {string} messages") do |string|
-  #   pending # Write code here that turns the phrase above into concrete actions
-  # end
+ 
 
   
   
