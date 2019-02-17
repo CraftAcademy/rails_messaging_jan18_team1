@@ -1,4 +1,4 @@
-  Given("following users exists") do |table|
+  Given("following users exist") do |table|
 		table.hashes.each do |user|
 			FactoryBot.create(:user, user)
 		end
@@ -33,8 +33,16 @@
 	When("select {string} as {string}") do |names, string2|
 		select names, from: string2
 	end
-
-	When("the following email exists") do |table|
-		# table is a Cucumber::MultilineArgument::DataTable
-		pending # Write code here that turns the phrase above into concrete actions
+	  
+	Given("the following email exists") do |table|
+    	table.hashes.each do |email|
+        	sender = User.find_by(name: email[:sender])
+        	@receiver = User.find_by(name: email[:receiver])
+        	sender.send_message(@receiver, email[:body], email[:subject])
+    	end
 	end
+
+	
+
+	
+	
