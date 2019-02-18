@@ -22,19 +22,30 @@
     login_as user, scope: :user
   end
   
-  Given("I am visiting the {string}") do |path|
-    case path
-      when "Inbox"
-       visit mailbox_inbox_path
-     else
-       return false
-    end
-  end
-  
   
   When("select {string} as {string}") do |names, string2|
     select names, from: string2
   end
+  
+  Given("I am visiting the {string}") do |path|
+    case path
+    when "Inbox"
+      visit mailbox_inbox_path
+    else 
+      return false
+    end
+  end
+
+	Given("the following email exists") do |table|
+    table.hashes.each do |email|
+        sender = User.find_by(name: email[:sender])
+        @receiver = User.find_by(name: email[:receiver])
+        sender.send_message(@receiver, email[:body], email[:subject])
+    end
+  end 
+  
  
+
+  
   
  
